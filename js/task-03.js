@@ -13,18 +13,19 @@ const images = [
   },
 ];
 
-// query the .gallery class selector
+// Query the .gallery class selector on the page.
 const gallery = document.querySelector(".gallery");
 
-// add inline styles to .gallery
+// Add inline styles to the .gallery element to arrange the images in a column and center them.
 gallery.setAttribute("style", "display: flex; flex-direction: column; align-items:center;");
 
-//Map the images array to create an array of li elements containing img elements for each image.
-//Add some styles
+// Map the images array to create an array of li elements containing img elements for each image.
+// Add some styles to the img elements.
 const items = images
   .map((image) => {
     return `<li><img src="${image.url}" alt="${image.alt}" style="width: 90vh; padding: 46px; display: block; border:solid #000 1px;"></li>`;
   })
   .join("");
 
+// Add the list of li elements to the .gallery element on the page.
 gallery.insertAdjacentHTML("beforeend", items);

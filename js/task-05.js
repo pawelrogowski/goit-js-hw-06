@@ -2,13 +2,10 @@
 const inputElement = document.getElementById("name-input");
 const outputElement = document.getElementById("name-output");
 
+function updateOutput() {
+  // Set output to current input value, or "Anonymous" if input is empty
+  outputElement.textContent = inputElement.value || "Anonymous";
+}
+
 // Add input event listener
-inputElement.addEventListener("input", () => {
-  if (inputElement.value === "") {
-    // Set output to "Anonymous" if input is empty
-    outputElement.textContent = "Anonymous";
-  } else {
-    // Set output to current input value
-    outputElement.textContent = inputElement.value;
-  }
-});
+inputElement.addEventListener("input", updateOutput);
