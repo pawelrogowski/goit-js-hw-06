@@ -13,16 +13,35 @@ const images = [
   },
 ];
 
+// Create a new stylesheet
+const sheet = document.createElement("style");
+
+// Add the CSS rules to the stylesheet
+sheet.innerHTML = `
+  .image {
+    width: 100%;
+    padding: 6px;
+  }
+  .gallery {
+    list-style: none;
+    display:flex;
+    flex-direction: column;
+  }
+  body {
+    background: black;
+  }
+`;
+
+// Append the stylesheet to the <head> element
+document.head.appendChild(sheet);
+
 // Query the .gallery class selector on the page.
 const gallery = document.querySelector(".gallery");
 
-// Add inline styles to the .gallery element to arrange the images in a column and center them.
-gallery.setAttribute("style", "display: flex; flex-direction: column; align-items:center;");
-
-// Map the images array to create an array of li elements containing img elements for each image.
+// Map the images array to create an array of li elements containing img elements for each image with a class .image.
 const items = images
   .map((image) => {
-    return `<li><img src="${image.url}" alt="${image.alt}"></li>`;
+    return `<li><img class="image" src="${image.url}" alt="${image.alt}"></li>`;
   })
   .join("");
 
