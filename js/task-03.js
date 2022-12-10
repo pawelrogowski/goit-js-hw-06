@@ -20,10 +20,9 @@ const gallery = document.querySelector(".gallery");
 gallery.setAttribute("style", "display: flex; flex-direction: column; align-items:center;");
 
 // Map the images array to create an array of li elements containing img elements for each image.
-// Add some styles to the img elements.
 const items = images
   .map((image) => {
-    return `<li><img src="${image.url}" alt="${image.alt}" style="width: 90vh; padding: 46px; display: block; border:solid #000 1px;"></li>`;
+    return `<li><img src="${image.url}" alt="${image.alt}"></li>`;
   })
   .join("");
 

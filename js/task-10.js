@@ -3,40 +3,44 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-// Select elements
+
+// Select elements from the DOM
 const inputElement = document.querySelector("input");
 const createButton = document.querySelector("[data-create]");
 const destroyButton = document.querySelector("[data-destroy]");
 const boxesElement = document.querySelector("#boxes");
 
 function createBoxes(amount) {
+  // set the starting size
+  const lastBoxSize = boxesElement.lastChild ? boxesElement.lastChild.offsetWidth + 10 : 30;
+  // Define a function named "createBoxes" that takes an "amount" parameter
   for (let i = 0; i < amount; i++) {
-    // Create box element
+    // Loop through the specified number of times
+    // Create a "div" element
     const boxElement = document.createElement("div");
 
-    // Set box size and random background color
-    boxElement.style.width = `${30 + i * 10}px`;
-    boxElement.style.height = `${30 + i * 10}px`;
+    // Set the width and height of the "div" element to be a function of the loop index, and set its background color to a random hexadecimal value
+    boxElement.style.width = `${lastBoxSize + i * 10}px`;
+    boxElement.style.height = `${lastBoxSize + i * 10}px`;
     boxElement.style.backgroundColor = getRandomHexColor();
 
-    // Add box element to boxes container
+    // Add the "div" element to the "boxes" container
     boxesElement.appendChild(boxElement);
   }
 }
 
 function destroyBoxes() {
-  // Clear boxes container
+  // Clear the HTML content of the "boxes" container
   boxesElement.innerHTML = "";
 }
 
-// Add create button click event listener
 createButton.addEventListener("click", () => {
-  // Create boxes
+  // When the "create" button is clicked, call the "createBoxes" function and pass the value of the input element as an argument
   createBoxes(inputElement.value);
 });
 
-// Add destroy button click event listener
+// Add an event listener for the "click" event on the "destroy" button
 destroyButton.addEventListener("click", () => {
-  // Destroy boxes
+  // When the "destroy" button is clicked, call the "destroyBoxes" function
   destroyBoxes();
 });
